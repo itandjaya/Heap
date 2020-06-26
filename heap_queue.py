@@ -58,6 +58,11 @@ class MinHeap:
         return (i<<1) + 1, (i<<1) + 2 ;
     
     def move_up(self, i_start):
+        # Moves up last element to the upper heap chain.
+        # This modifies the heap list data.
+        # The function uses recursive calls to move the element.
+        # Returns None.
+
         i = i_start;
         i_parent = self.parent(i);
 
@@ -70,6 +75,11 @@ class MinHeap:
         return;   
 
     def move_down(self, i_start = 0):
+        # Moves down top element to the lower heap chain.
+        # This modifies the heap list data.
+        # The function uses recursive calls to move the element.
+        # Returns None.
+
         i = i_start;
         max_size = len(self.data);
 
@@ -100,7 +110,9 @@ class MinHeap:
         return;
     
     def heappop(self):
-        
+        # Returns the top element of the heap, then heapify the list.
+        # If heap list is empty, returns None.
+
         if not self.data:           return None;
         elif len(self.data) == 1:   return self.data.pop();
 
@@ -111,18 +123,32 @@ class MinHeap:
         return ans;
 
     def heappush(self, x):
+        # Adds a new element at bottom of heap list, then heapify the list.
+        # Returns None.
         
         self.data.append(x);
         self.move_up(len(self.data)-1);
 
+
+## MaxHeap class inherited from MinHeap class.
+## The move_up and move_down methods are re-defined for MaxHeap.
+
 class MaxHeap(MinHeap):
 
     def __init__(self, list_input = []):
-        MinHeap.__init__(self, list_input);      
+        ## Constructor of MaxHeap. Inherit from MinHeap class.
+        ## Takes list as input, then heapify it.
+        ## Retuns None.  
 
+        MinHeap.__init__(self, list_input);      
         return;
     
     def move_up(self, i_start):
+        # Moves up last element to the upper heap chain.
+        # This modifies the heap list data.
+        # The function uses recursive calls to move the element.
+        # Returns None.
+
         i = i_start;
         i_parent = self.parent(i);
 
@@ -135,6 +161,11 @@ class MaxHeap(MinHeap):
         return;   
 
     def move_down(self, i_start = 0):
+        # Moves down top element to the lower heap chain.
+        # This modifies the heap list data.
+        # The function uses recursive calls to move the element.
+        # Returns None.
+        
         i = i_start;
         max_size = len(self.data);
 
